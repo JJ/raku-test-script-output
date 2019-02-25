@@ -10,11 +10,21 @@ sub output-ok( $f, Str $msg ) is export {
     my $output = capture_stdout {
         @pod = load( $f );
     };
+    dd $output;
     my $real-output;
     for @pod -> $block {
         $real-output ~= $block.contents.join("");
     }
     is( $output, $real-output, $msg );
+}
+
+sub dir-ok( $dir, Str $msg ) is export {
+    fail "No such dir" if !$dir.d;
+    subtest {
+	for dir($dir, test => /\.p6/ ) -> $f {
+	    output-ok( $f.IO, "$f in dir is OK" );
+	}
+    }
 }
 
 
