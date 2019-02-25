@@ -7,6 +7,6 @@ for <runnable other> -> $f {
     output-ok( $io, "$f output is OK" );
 }
 
-my $dir = "t/".IO.d ?? "t/".IO !! ".".IO;
+my $dir = "t/".IO.d ?? "t/dir".IO !! "dir/".IO;
 dir-ok( $dir, "All scripts in the dir are OK" );
 done-testing;

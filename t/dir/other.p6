@@ -6,6 +6,6 @@ use v6;
 
 =output
 Here
-Thhere
+There
 
 

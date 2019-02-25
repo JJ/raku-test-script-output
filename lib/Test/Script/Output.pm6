@@ -10,7 +10,6 @@ sub output-ok( $f, Str $msg ) is export {
     my $output = capture_stdout {
         @pod = load( $f );
     };
-    dd $output;
     my $real-output;
     for @pod -> $block {
         $real-output ~= $block.contents.join("");
