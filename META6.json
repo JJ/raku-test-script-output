@@ -15,7 +15,7 @@
     "Test::Script::Output" : "lib/Test/Script/Output.pm6"
   },
   "resources" : [ ],
-  "source-url" : "https://github.com/JJ/perl6-test-script-output",
+  "source-url" : "https://github.com/JJ/perl6-test-script-output.git",
   "tags" : [
     "Test",
     "App",
