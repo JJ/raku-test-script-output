@@ -1,6 +1,22 @@
 use v6.c;
 unit class Test::Script::Output:ver<0.0.1>;
 
+use IO::Capture::Simple;
+use Pod::Load;
+use Test;
+
+sub output-ok( $f, Str $msg ) is export {
+    my @pod;
+    my $output = capture_stdout {
+        @pod = load( $f );
+    };
+    my $real-output;
+    for @pod -> $block {
+        $real-output ~= $block.contents.join("");
+    }
+    is( $output, $real-output, $msg );
+}
+
 
 =begin pod
 

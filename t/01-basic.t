@@ -2,6 +2,10 @@ use v6.c;
 use Test;
 use Test::Script::Output;
 
-pass "replace me";
+for <runnable other> -> $f {
+    my $io = "./$f.p6".IO.e ?? "./$f.p6".IO !! "t/$f.p6".IO;
+    dd $io;
+    output-ok( $io, "$f output is OK" );
+}
 
 done-testing;
