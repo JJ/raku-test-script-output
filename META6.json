@@ -3,7 +3,8 @@
     "JJ Merelo"
   ],
   "build-depends" : [ ],
-  "depends" : [ ],
+    "depends" : [ "Pod::Load",
+                  "IO::Capture::Simple"],
   "description" : "blah blah blah",
   "license" : "Artistic-2.0",
   "name" : "Test::Script::Output",
@@ -13,7 +14,7 @@
   },
   "resources" : [ ],
   "source-url" : "",
-  "tags" : [ ],
+    "tags" : [ "Test","App","Script" ],
   "test-depends" : [ ],
   "version" : "0.0.1"
 }
