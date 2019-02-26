@@ -12,7 +12,7 @@ COPY lib/Test/Script/Output.pm6 lib/Test/Script/Output.pm6
 RUN zef install .
 
 # Will run this
-ENTRYPOINT perl6 -v && zef test .
+ENTRYPOINT perl6 -v && perl6 t/0.t
 
 # Repeating mother's env
 ENV PATH="/root/.rakudobrew/bin:${PATH}"
