@@ -5,9 +5,9 @@ COPY META6.json .
 
 RUN apk update && apk upgrade \
     && zef install --deps-only . \
-    && mkdir lib/Test/Script
+    && mkdir -p lib/Test/Script
 
-COPY lib/Test/Script/Output.pm lib/Test/Script
+COPY lib/Test/Script/Output.pm6 lib/Test/Script/Output.pm6
 
 RUN zef install .
 
