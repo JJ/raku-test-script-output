@@ -20,7 +20,7 @@ sub output-ok( $f, Str $msg ) is export {
 sub dir-ok( $dir, Str $msg ) is export {
     fail "No such dir" if !$dir.d;
     subtest {
-	for dir($dir, test => /\.p6/ ) -> $f {
+	for dir($dir, test => /\.p6$/ ) -> $f {
 	    output-ok( $f.IO, "$f in dir is OK" );
 	}
     }
