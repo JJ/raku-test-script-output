@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/JJ/perl6-test-script-output.svg?branch=master)](https://travis-ci.org/JJ/perl6-test-script-output)
+[![Build Status](https://travis-ci.com/JJ/perl6-test-script-output.svg?branch=master)](https://travis-ci.com/JJ/perl6-test-script-output)
 
 NAME
 ====
