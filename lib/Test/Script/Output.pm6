@@ -12,9 +12,16 @@ sub output-ok( $f, Str $msg ) is export {
     };
     my $real-output;
     for @pod -> $block {
+        say $block.contents;
         $real-output ~= $block.contents.join("");
     }
-    is( $output, $real-output, $msg );
+    if $real-output ~~ /^^\// { #Treat as regular expression
+        $real-output ~~ /^^\/$<regex>= [ .+ ]\//;
+        my $extracted = ~$<regex>;
+        like( $output, / <$extracted> /, $msg );
+    } else {
+        is( $output, $real-output, $msg );
+    }
 }
 
 sub dir-ok( $dir, Str $msg ) is export {
