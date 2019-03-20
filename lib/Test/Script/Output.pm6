@@ -12,7 +12,6 @@ sub output-ok( $f, Str $msg ) is export {
     };
     my $real-output;
     for @pod -> $block {
-        say $block.contents;
         $real-output ~= $block.contents.join("");
     }
     if $real-output ~~ /^^\// { #Treat as regular expression
