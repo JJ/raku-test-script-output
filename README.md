@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/JJ/perl6-test-script-output.svg?branch=master)](https://travis-ci.com/JJ/perl6-test-script-output)
+[![Build Status](https://travis-ci.org/JJ/perl6-test-script-output.svg?branch=master)](https://travis-ci.org/JJ/perl6-test-script-output)
 
 NAME
 ====
@@ -12,17 +12,16 @@ SYNOPSIS
 
     # in the tested file, file.p6
     say "Hello";
-    =output
-    Hello
+
+      Hello
 
     # in test
     output-ok( "file.p6", "script runs OK")
 
     # Another tested file, regex.p6
     say "Time now is ", now;
-    =output
-    /^^Time now/
 
+      /^^Time now/
 
     # in test
     output-ok( "regex.p6", "script tested via regex runs OK")
@@ -34,14 +33,12 @@ DESCRIPTION
 
 You can either set the output explicitly
 
-    =output
-    First line
-    Second line
+        First line
+        Second line
 
 Or match the whole output via a regex, which can be used when the output is variable
 
-    =output
-    /^^ Start /
+        /^^ Start /
 
 Methods
 =======
