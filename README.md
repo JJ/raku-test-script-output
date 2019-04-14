@@ -3,7 +3,7 @@
 NAME
 ====
 
-Test::Script::Output - Tests the output of scripts with special comments
+Test::Script::Output - Tests the output of scripts using special comments
 
 SYNOPSIS
 ========
@@ -29,7 +29,7 @@ SYNOPSIS
 DESCRIPTION
 ===========
 
-`Test::Script::Output` tests the output of scripts. In order to check it, every script must include an `=output` pod section with the output that should be expected from it.
+`Test::Script::Output` tests the output of scripts. Desired output must be included aas an `=output` pod section with the literal output that should be expected from it. If that changes, a regular expression can be used.
 
 You can either set the output explicitly
 

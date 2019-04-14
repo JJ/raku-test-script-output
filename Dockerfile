@@ -1,5 +1,5 @@
 FROM jjmerelo/test-perl6:latest
-LABEL version="1.0" maintainer="JJ Merelo <jjmerelo@GMail.com>"
+LABEL version="1.1" maintainer="JJ Merelo <jjmerelo@GMail.com>"
 
 COPY META6.json .
 
