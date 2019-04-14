@@ -14,6 +14,7 @@ sub output-ok( $f, Str $msg ) is export {
     for @pod -> $block {
         $real-output ~= $block.contents.join("");
     }
+    $output ~~ s/Pod"::"Load"::"m\d+"::"//;
     if $real-output ~~ /^^\// { #Treat as regular expression
         $real-output ~~ /^^\/$<regex>= [ .+ ]\//;
         my $extracted = ~$<regex>;
