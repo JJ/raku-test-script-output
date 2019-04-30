@@ -1,6 +1,7 @@
 2019-04-30  Juan J. merelo  <jmerelo@penny>
 
 	* lib/Test/Script/Output.pm6: Factors out the output-extraction routine.
+	This is version 0.0.4, whose main improvement is to be able to test file-library combos, with "use lib" statements (which errored in the previous version). 
 
 2019-04-13  Juan J. merelo  <jmerelo@penny>
 
