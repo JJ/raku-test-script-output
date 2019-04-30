@@ -28,15 +28,24 @@ sub dir-ok( $dir, Str $msg ) is export {
 }
 
 sub _get_outputs( $f ) {
-    my @pod;
-    my $output = capture_stdout {
-        @pod = load( $f );
-    };
-    my $wanted-output;
-    for @pod -> $block {
-        $wanted-output ~= $block.contents.join("");
+    my ($output, $wanted-output);
+    try {
+        my @pod;
+        $output = capture_stdout {
+            @pod = load( $f );
+        };
+        for @pod -> $block {
+            $wanted-output ~= $block.contents.join("");
+        }
+        $output ~~ s/Pod"::"Load"::"m\d+"::"//;
     }
-    $output ~~ s/Pod"::"Load"::"m\d+"::"//;
+
+    if $! and $! ~~ X::Package::UseLib { # with `use lib` we need another strategy
+        $wanted-output = $f.slurp.split("=output")[1];
+        my ($dir) = $f.path.split("/")[0];
+        $output = qqx{ perl6 -I$dir $f };
+    }
+    
     return $output, $wanted-output;
 }
 
