@@ -6,21 +6,15 @@ use Pod::Load;
 use Test;
 
 sub output-ok( $f, Str $msg ) is export {
-    my @pod;
-    my $output = capture_stdout {
-        @pod = load( $f );
-    };
-    my $real-output;
-    for @pod -> $block {
-        $real-output ~= $block.contents.join("");
-    }
-    $output ~~ s/Pod"::"Load"::"m\d+"::"//;
-    if $real-output ~~ /^^\// { #Treat as regular expression
-        $real-output ~~ /^^\/$<regex>= [ .+ ]\//;
+
+    my ($output, $wanted-output) = _get_outputs( $f );
+    
+    if $wanted-output ~~ /^^\// { #Treat as regular expression
+        $wanted-output ~~ /^^\/$<regex>= [ .+ ]\//;
         my $extracted = ~$<regex>;
         like( $output, / <$extracted> /, $msg );
     } else {
-        is( $output, $real-output, $msg );
+        is( $output, $wanted-output, $msg );
     }
 }
 
@@ -31,6 +25,19 @@ sub dir-ok( $dir, Str $msg ) is export {
 	    output-ok( $f.IO, "$f in dir is OK" );
 	}
     }
+}
+
+sub _get_outputs( $f ) {
+    my @pod;
+    my $output = capture_stdout {
+        @pod = load( $f );
+    };
+    my $wanted-output;
+    for @pod -> $block {
+        $wanted-output ~= $block.contents.join("");
+    }
+    $output ~~ s/Pod"::"Load"::"m\d+"::"//;
+    return $output, $wanted-output;
 }
 
 
