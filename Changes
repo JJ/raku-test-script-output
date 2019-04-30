@@ -1,5 +1,7 @@
 2019-04-30  Juan J. merelo  <jmerelo@penny>
 
+	* Dockerfile: This version is also able to install dependencies needed to test in the Dockerfile. This is not a code, but only a Dockerfile change.
+
 	* lib/Test/Script/Output.pm6: Factors out the output-extraction routine.
 	This is version 0.0.4, whose main improvement is to be able to test file-library combos, with "use lib" statements (which errored in the previous version). 
 
