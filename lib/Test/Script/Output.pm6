@@ -94,6 +94,26 @@ which can be used when the output is variable
     =output
     /^^ Start /
 
+The scripts can include external compunits as long as they're available, and you take care of including all relevant paths via C<use lib>.
+
+If you want to check out how this works, the biggest collection of examples is at L<https://github.com/JJ/perl6-quick-reference-apress>.
+
+Provided is also a Dockerfile you can use directly for your tests; check it out at L<https://cloud.docker.com/repository/docker/jjmerelo/perl6-test-script-output/>
+
+Use this C<.travis.yml> for testing your scripts (or something like that, changing the name of the directory)
+
+=begin code
+language: minimal
+
+services:
+  - docker
+
+install:
+  - docker pull jjmerelo/perl6-test-script-output
+  - mkdir t && echo "use Test::Script::Output;for <Chapter7 Chapter8 Chapter9 Chapter10> -> \$d { dir-ok( \$d.IO , 'Scripts in dir ' ~ \$d ~ ' are OK') }" > t/0.t
+
+script: docker run -t -v  $TRAVIS_BUILD_DIR:/test jjmerelo/perl6-test-script-output
+=end code
 
 =head1 Methods
 
@@ -105,6 +125,11 @@ or a IO handle for that same file; the C<$msg> is the test message.
 =head2 dir-ok( $dir, $msg)
 
 Takes the files with the extension "*.p6" from a dir, and tests them, the test will be OK if all of the files check out.
+
+=head2 _get_output( $f )
+
+This is the routine doing the real work of extracting the expected and actual output from the file.
+It's not exported by default.
 
 =head1 AUTHOR
 
