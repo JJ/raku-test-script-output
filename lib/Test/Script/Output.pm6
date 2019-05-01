@@ -1,5 +1,5 @@
 use v6.c;
-unit class Test::Script::Output:ver<0.0.4>;
+unit module Test::Script::Output:ver<0.0.4>;
 
 use IO::Capture::Simple;
 use Pod::Load;
@@ -22,6 +22,7 @@ sub dir-ok( $dir, Str $msg ) is export {
     fail "No such dir" if !$dir.d;
     subtest {
 	for dir($dir, test => /\.p6 $$/ ) -> $f {
+            say "f is $f";
 	    output-ok( $f.IO, "$f in dir is OK" );
 	}
     }
