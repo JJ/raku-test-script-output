@@ -1,4 +1,4 @@
-FROM jjmerelo/test-perl6:latest
+FROM jjmerelo/perl6-test-openssl:latest
 LABEL version="3.0" maintainer="JJ Merelo <jjmerelo@GMail.com>"
 
 COPY META6.json .
