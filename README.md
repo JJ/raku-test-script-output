@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/JJ/perl6-test-script-output.svg?branch=master)](https://travis-ci.org/JJ/perl6-test-script-output)
+[![Test-install and cache deps](https://github.com/JJ/raku-test-script-output/actions/workflows/test.yaml/badge.svg)](https://github.com/JJ/raku-test-script-output/actions/workflows/test.yaml)
 
 NAME
 ====
