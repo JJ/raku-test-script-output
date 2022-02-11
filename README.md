@@ -8,23 +8,34 @@ Test::Script::Output - Tests the output of scripts using special comments
 SYNOPSIS
 ========
 
-    use Test::Script::Output;
+```raku
+# in the tested file, file.p6
+say "Hello";
+=output
+Hello
+```
 
-    # in the tested file, file.p6
-    say "Hello";
+The test file for this will be:
 
-      Hello
+```raku
+use Test::Script::Output;
+output-ok( "file.p6", "script runs OK")
+```
 
-    # in test
-    output-ok( "file.p6", "script runs OK")
+In another file:
 
-    # Another tested file, regex.p6
-    say "Time now is ", now;
+```raku
+# Another tested file, regex.p6
+say "Time now is ", now;
+=output
+/^^Time now/
+```
 
-      /^^Time now/
+Can be tested with:
 
-    # in test
-    output-ok( "regex.p6", "script tested via regex runs OK")
+```
+output-ok( "regex.p6", "script tested via regex runs OK")
+```
 
 DESCRIPTION
 ===========
@@ -33,12 +44,19 @@ DESCRIPTION
 
 You can either set the output explicitly
 
-        First line
-        Second line
+```raku
+=output
+First line
+Second line
+```
 
 Or match the whole output via a regex, which can be used when the output is variable
 
-        /^^ Start /
+```raku
+=output
+/^^ Start /
+```
+
 
 The scripts can include external compunits as long as they're available, and you take care of including all relevant paths via `use lib`.
 
