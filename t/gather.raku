@@ -1,6 +1,6 @@
 #!/usr/bin/env perl6
 
-use lib <.>;
+use lib <. ./t>;
 
 use Draw-Two;
 

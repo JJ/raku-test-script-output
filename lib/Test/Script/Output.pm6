@@ -8,8 +8,9 @@ use Test;
 sub output-ok( $f, Str $msg ) is export {
 
     my ($output, $wanted-output) = _get_outputs( $f );
-    
-    if $wanted-output ~~ /^^\// { #Treat as regular expression
+    if !$wanted-output {
+        ok( $output, $msg );
+    } elsif $wanted-output ~~ /^^\// { #Treat as regular expression
         $wanted-output ~~ /^^\/$<regex>= [ .+ ]\//;
         my $extracted = ~$<regex>;
         like( $output, / <$extracted> /, $msg );
@@ -35,18 +36,17 @@ sub _get_outputs( $f ) {
         $output = capture_stdout {
             @pod = load( $f );
         };
+        say "Output de $f : $output\n", @pod;
         for @pod -> $block {
             $wanted-output ~= $block.contents.join("");
         }
         $output ~~ s/Pod"::"Load"::"m\d+"::"//;
+
+        CATCH {
+            say .message;
+        }
     }
 
-    if $! and $! ~~ X::Package::UseLib { # with `use lib` we need another strategy
-        $wanted-output = $f.slurp.split("=output")[1];
-        my ($dir) = $f.path.split("/")[0];
-        $output = qqx{ raku -I$dir $f };
-    }
-    
     return $output, $wanted-output;
 }
 
