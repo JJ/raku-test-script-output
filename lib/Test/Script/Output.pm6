@@ -3,6 +3,7 @@ unit module Test::Script::Output:ver<0.0.5>;
 
 use IO::Capture::Simple;
 use Pod::Load;
+use X::Pod::Load::SourceErrors;
 use Test;
 
 sub output-ok( $f, Str $msg ) is export {
@@ -36,17 +37,18 @@ sub _get_outputs( $f ) {
         $output = capture_stdout {
             @pod = load( $f );
         };
-        say "Output de $f : $output\n", @pod;
         for @pod -> $block {
             $wanted-output ~= $block.contents.join("");
         }
         $output ~~ s/Pod"::"Load"::"m\d+"::"//;
-
-        CATCH {
-            say .message;
-        }
     }
 
+    # with `use lib` we need another strategy
+    if ($! and $! ~~ X::Pod::Load::SourceErrors) {
+        $wanted-output = $f.slurp.split("=output")[1];
+        my ($dir) = $f.path.split("/")[0];
+        $output = qqx{raku -I$dir $f };
+    }
     return $output, $wanted-output;
 }
 
