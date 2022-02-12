@@ -1,5 +1,5 @@
 use v6.c;
-unit module Test::Script::Output:ver<0.0.5>;
+unit module Test::Script::Output:ver<0.1.0>;
 
 use IO::Capture::Simple;
 use Pod::Load;

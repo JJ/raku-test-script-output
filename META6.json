@@ -1,7 +1,7 @@
 {
   "name": "Test::Script::Output",
   "description": "Tests the output of scripts using special comments",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "perl": "6.c",
   "authors": [
     "JJ Merelo"
