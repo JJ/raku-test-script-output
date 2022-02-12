@@ -80,7 +80,8 @@ Test::Script::Output - Tests the output of scripts using special comments
 
 =head1 DESCRIPTION
 
-C<Test::Script::Output> tests the output of scripts. Desired output  must be included aas an C<=output> pod section with the literal
+C<Test::Script::Output> tests the output of scripts. Desired output  must be
+included aas an C<=output> pod section with the literal
 output that should be expected from it. If that changes, a regular expression can be used.
 
 You can either set the output explicitly
@@ -95,13 +96,17 @@ which can be used when the output is variable
     =output
     /^^ Start /
 
-The scripts can include external compunits as long as they're available, and you take care of including all relevant paths via C<use lib>.
+The scripts can include external compunits as long as they're available, and you
+take care of including all relevant paths via C<use lib>.
 
-If you want to check out how this works, the biggest collection of examples is at L<https://github.com/JJ/perl6-quick-reference-apress>.
+If you want to check out how this works, the biggest collection of examples is
+at L<https://github.com/JJ/perl6-quick-reference-apress>.
 
-Provided is also a Dockerfile you can use directly for your tests; check it out at L<https://cloud.docker.com/repository/docker/jjmerelo/perl6-test-script-output/>
+Provided is also a C<Dockerfile> you can use directly for your tests; check it
+out at L<https://cloud.docker.com/repository/docker/jjmerelo/perl6-test-script-output/>
 
-Use this C<.travis.yml> for testing your scripts (or something like that, changing the name of the directory)
+Use this CI workflow for testing your scripts (or something like that,
+changing the name of the directory).
 
 =begin code
 language: minimal
@@ -125,12 +130,13 @@ or a IO handle for that same file; the C<$msg> is the test message.
 
 =head2 dir-ok( $dir, $msg)
 
-Takes the files with the extension "*.p6" from a dir, and tests them, the test will be OK if all of the files check out.
+Takes the files with the extension "*.p6" from a dir, and tests them, the
+test will be OK if all of the files check out.
 
 =head2 _get_output( $f )
 
-This is the routine doing the real work of extracting the expected and actual output from the file.
-It's not exported by default.
+This is the (private) routine doing the real work of extracting the expected
+and actual output from the file. It's not exported by default.
 
 =head1 AUTHOR
 
@@ -145,8 +151,9 @@ this year by Apress.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2019 JJ Merelo
+Copyright 2019,2022 JJ Merelo
 
-This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
+This library is free software; you can redistribute it and/or modify it under
+the Artistic License 2.0.
 
 =end pod
