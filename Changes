@@ -1,9 +1,13 @@
+2022-02-12  jmerelo  <jmerelo@princess-carolyn>
+
+	* lib/Test/Script/Output.pm6: Brings it up to date, fixing errors and making scripts with no output not fail.
+
 2019-04-30  Juan J. merelo  <jmerelo@penny>
 
 	* Dockerfile: This version is also able to install dependencies needed to test in the Dockerfile. This is not a code, but only a Dockerfile change.
 
 	* lib/Test/Script/Output.pm6: Factors out the output-extraction routine.
-	This is version 0.0.4, whose main improvement is to be able to test file-library combos, with "use lib" statements (which errored in the previous version). 
+	This is version 0.0.4, whose main improvement is to be able to test file-library combos, with "use lib" statements (which errored in the previous version).
 
 2019-04-13  Juan J. merelo  <jmerelo@penny>
 
@@ -11,9 +15,5 @@
 
 2019-03-20  Juan J. merelo  <jmerelo@penny>
 
-	* README.md (Test): Adds the possibility of testing by regex, instead of plain output 
-
-Revision history for Test-Script-Output
-
-{{$NEXT}}
-    - Initial version
+	* README.md (Test): Adds the possibility of testing by regex, instead of plain output
+	* LICENSE: Start Revision history for Test-Script-Output
