@@ -21,7 +21,7 @@ sub output-ok( $f, Str $msg ) is export {
 sub dir-ok( $dir, Str $msg ) is export {
     fail "No such dir" if !$dir.d;
     subtest {
-	    for dir($dir, test => /\.p6 $$/ ) -> $f {
+	    for dir($dir, test => /\.p6 | \.raku $$/ ) -> $f {
             say "f is $f";
 	        output-ok( $f.IO, "$f in dir is OK" );
 	    }
@@ -130,8 +130,8 @@ or a IO handle for that same file; the C<$msg> is the test message.
 
 =head2 dir-ok( $dir, $msg)
 
-Takes the files with the extension "*.p6" from a dir, and tests them, the
-test will be OK if all of the files check out.
+Takes the files with the extension `*.p6` and `*.raku` from a dir, and tests
+them, the test will be OK if all of the files check out.
 
 =head2 _get_output( $f )
 
@@ -147,7 +147,6 @@ JJ Merelo <jjmerelo@gmail.com>
 This test module was created originally to test the scripts for the
 book "Perl 6 Quick Reference", which is due to be published later
 this year by Apress.
-
 
 =head1 COPYRIGHT AND LICENSE
 
