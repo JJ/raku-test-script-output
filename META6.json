@@ -8,7 +8,7 @@
   ],
   "auth": "zef:jjmerelo",
   "depends": [
-    "Pod::Load",
+    "Pod::Load:ver<0.7.1+>",
     "IO::Capture::Simple"
   ],
   "provides": {
