@@ -103,7 +103,9 @@ JJ Merelo <jjmerelo@gmail.com>
 Note
 ====
 
-This test module was created originally to test the scripts for the book "Perl 6 Quick Reference", which is due to be published later this year by Apress.
+This test module was created originally to test the scripts for the book
+ ["Perl 6 Quick Reference"](https://link.springer.com/book/10.1007/978-1-4842
+ -4956-7), published by Apress.
 
 COPYRIGHT AND LICENSE
 =====================
