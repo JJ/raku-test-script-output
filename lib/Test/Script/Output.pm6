@@ -44,7 +44,7 @@ sub _get_outputs( $f ) {
     if $! and $! ~~ X::Package::UseLib { # with `use lib` we need another strategy
         $wanted-output = $f.slurp.split("=output")[1];
         my ($dir) = $f.path.split("/")[0];
-        $output = qqx{ perl6 -I$dir $f };
+        $output = qqx{ raku -I$dir $f };
     }
     
     return $output, $wanted-output;
